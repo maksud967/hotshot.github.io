@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Request</title>
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #buttons {
+            display: flex;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 20px 40px;
+            font-size: 24px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            color: white;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+
+        .yes {
+            background-color: #4CAF50; /* Green */
+        }
+
+        .no {
+            background-color: #F44336; /* Red */
+        }
+
+        .yes:hover {
+            background-color: #45a049;
+        }
+
+        .no:hover {
+            background-color: #e53935;
+        }
+
+        #qr-code {
+            display: none;
+            margin-top: 30px;
+        }
+
+        /* Wavy animation */
+        .wavy-text {
+            font-size: 3em;
+            color: red; /* Red color for emphasis */
+            animation: wave 1.5s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Optional shadow for the text */
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">Can you send some money?</h1>
+    <div id="buttons">
+        <button class="button yes" onclick="handleAnswer('yes')">Yes</button>
+        <button class="button no" onclick="handleAnswer('no')">No</button>
+    </div>
+
+    <!-- Hidden QR Code initially -->
+    <img id="qr-code" src="whatsapp.jpeg" alt="QR Code for donation" width="200" height="200">
+
+    <script>
+        function handleAnswer(answer) {
+            const buttonsDiv = document.getElementById("buttons");
+            const question = document.getElementById("question");
+
+            if (answer === "yes") {
+                // Show QR Code
+                document.getElementById("qr-code").style.display = "block";
+                question.innerText = "Thank you for your generosity!";
+                buttonsDiv.style.display = "none"; // Hide buttons
+            } else if (answer === "no") {
+                // Change question to "Are you heartless?" with Yes/No options
+                question.innerText = "Are you heartless?";
+                buttonsDiv.innerHTML = ` 
+                    <button class="button yes" onclick="handleHeartless('yes')">Yes</button>
+                    <button class="button no" onclick="handleHeartless('no')">No</button>
+                `;
+            }
+        }
+
+        function handleHeartless(answer) {
+            const buttonsDiv = document.getElementById("buttons");
+            const question = document.getElementById("question");
+
+            if (answer === "no") {
+                // Return to initial question with only a "Yes" option
+                question.innerText = "Can you send some money?";
+                buttonsDiv.innerHTML = `<button class="button yes" onclick="handleAnswer('yes')">Yes</button>`;
+            } else {
+                // Display "You are a very bad person" message with wavy animation and no background
+                document.body.innerHTML = "<h1 class='wavy-text'>You are a very bad person.</h1>";
+            }
+        }
+    </script>
+
+</body>
+</html>

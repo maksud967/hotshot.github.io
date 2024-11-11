@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Person Message</title>
+    <style>
+        body {
+            background-color: #fff; /* Ensures there's no background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            color: red; /* Red for emphasis */
+            animation: wave 1.5s ease-in-out infinite; /* Wavy effect */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Optional shadow for the text */
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>You are a very bad person.</h1>
+
+</body>
+</html>
